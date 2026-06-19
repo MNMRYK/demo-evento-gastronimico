@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAMI | Secret Supper Club</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cinzel (Serif Elegante) y Lato (Sans limpia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuración Tailwind personalizada -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wine: '#4A0E17',       /* Rojo vino profundo */
+                        wineLight: '#7A1C28',  /* Rojo vino claro */
+                        carbon: '#121212',     /* Negro carbón */
+                        carbonLight: '#1E1E1E',/* Gris carbón */
+                        copper: '#B87333',     /* Cobre / Oro rosa oscuro */
+                        cream: '#FDFBF7',      /* Crema suave para textos */
+                    },
+                    fontFamily: {
+                        serif: ['"Cinzel"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'texture': "url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h20v20H0z\" fill=\"%23121212\"/%3E%3Cpath d=\"M0 0h10v10H0zm10 10h10v10H10z\" fill=\"%23161616\"/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* PARTE DE CSS */
+        body {
+            background-color: #121212;
+            color: #FDFBF7;
+        }
+
+        /* Efecto Parallax puro en CSS */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Estilo para los puntitos del menú del restaurante */
+        .menu-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted rgba(184, 115, 51, 0.4); /* Puntos color cobre */
+            margin: 0 15px;
+            position: relative;
+            top: -6px;
+        }
+
+        /* Ocultar barra de scroll para un look inmersivo */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #4A0E17; }
+        ::-webkit-scrollbar-thumb:hover { background: #B87333; }
+
+        /* Estilo de los inputs oscuros */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-bottom-color: #B87333 !important;
+            box-shadow: 0 1px 0 0 #B87333 !important;
+        }
+        
+        /* Personalizar Checkbox/Radio */
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: #B87333;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-copper selection:text-carbon bg-texture">
+
+    <!-- HERO SECTION CON EFECTO PARALLAX -->
+    <!-- URL Directa de Unsplash: Chef emplatando / Gastronomía oscura -->
+    <header class="relative h-screen flex flex-col items-center justify-center parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80');">
+        
+        <!-- Overlay para oscurecer la imagen y dejar leer el texto -->
+        <div class="absolute inset-0 bg-carbon/70 bg-gradient-to-b from-transparent via-carbon/50 to-carbon"></div>
+
+        <nav class="absolute top-0 w-full p-8 flex justify-between items-center z-20">
+            <div class="font-serif text-2xl tracking-[0.3em] text-cream">UMAMI</div>
+            <a href="#reserva" class="hidden md:inline-block border border-copper text-copper hover:bg-copper hover:text-carbon px-6 py-2 uppercase tracking-widest text-xs transition-all duration-300">
+                Reservar Mesa
+            </a>
+        </nav>
+
+        <div class="relative z-10 text-center px-6 w-full max-w-4xl mt-16">
+            <p class="uppercase tracking-[0.4em] text-copper text-sm mb-6 border-b border-copper/30 pb-2 inline-block">Experiencia Clandestina</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 text-cream drop-shadow-lg">
+                El Sabor de <br> lo Oculto
+            </h1>
+            <p class="text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto text-cream/80">
+                Un Pop-Up gastronómico de 7 pases en una ubicación secreta de Alicante. Solo 20 comensales por noche. Solo durante este mes de Octubre.
+            </p>
+
+            <a href="#reserva" class="inline-block bg-wine hover:bg-wineLight text-cream px-10 py-4 font-serif uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_4px_20px_rgba(74,14,23,0.5)]">
+                Desbloquear Acceso
+            </a>
+        </div>
+        
+        <!-- Indicador de scroll -->
+        <div class="absolute bottom-10 z-10 animate-bounce">
+            <a href="#concepto" class="text-copper/70 hover:text-copper"><i class="fa-solid fa-arrow-down-long text-2xl"></i></a>
+        </div>
+    </header>
+
+    <!-- EL CONCEPTO Y EL CHEF -->
+    <section id="concepto" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            
+            <div class="relative group">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef cocinando alta gastronomía" class="w-full h-[600px] object-cover filter grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="absolute -bottom-8 -right-8 bg-carbonLight p-8 border border-copper/20 hidden md:block z-10 shadow-2xl">
+                    <p class="font-serif text-2xl text-copper mb-2">Chef M. Navarro</p>
+                    <p class="text-sm font-light text-cream/60 tracking-widest uppercase">2 Estrellas Michelin</p>
+                </div>
+            </div>
+
+            <div class="md:pl-10">
+                <h2 class="font-serif text-4xl md:text-5xl mb-8 text-cream">No busques la dirección. <br><span class="text-copper italic">Nosotros te encontraremos.</span></h2>
+                <div class="w-16 h-px bg-wine mb-8"></div>
+                <p class="font-light leading-relaxed mb-6 text-cream/70 text-lg">
+                    UMAMI no es un restaurante. Es una experiencia efímera que desaparece tan rápido como llega. Hemos transformado un antiguo almacén del siglo XIX en un santuario dedicado a la alta cocina de vanguardia.
+                </p>
+                <p class="font-light leading-relaxed mb-10 text-cream/70 text-lg">
+                    Sin carta, sin reglas. Confía en el Chef y déjate llevar por un viaje sensorial de 7 pases maridados con vinos de bodegas independientes, donde el producto local y las técnicas japonesas colisionan.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-8 border-t border-carbonLight pt-8">
+                    <div>
+                        <p class="font-serif text-3xl text-wine mb-1">7</p>
+                        <p class="text-xs uppercase tracking-widest text-copper">Pases Exclusivos</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-3xl text-wine mb-1">20</p>
+                        <p class="text-xs uppercase tracking-widest text-copper">Asientos por Noche</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EL MENÚ DEGUSTACIÓN -->
+    <section class="py-24 px-6 bg-carbonLight relative overflow-hidden">
+        <!-- Decoración floral oscura de fondo (abstracto CSS) -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-wine rounded-full mix-blend-overlay filter blur-[150px] opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <p class="uppercase tracking-[0.3em] text-xs mb-4 text-copper font-medium">Capítulo Único</p>
+                <h2 class="font-serif text-5xl text-cream mb-6">Menú Degustación</h2>
+                <p class="font-light text-cream/60 italic text-lg">180€ por persona (Maridaje de 5 copas incluido)</p>
+            </div>
+
+            <!-- Maquetación de Menú Clásico -->
+            <div class="space-y-10 px-4 md:px-12">
+                
+                <!-- Pase 1 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">El Bosque Húmedo</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Consomé de setas silvestres, trufa negra de Sarrión y espuma de pino.</p>
+                </div>
+
+                <!-- Pase 2 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">Marea Baja</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Ostra Gillardeau a la brasa, emulsión de jalapeño y caviar de aceite de oliva.</p>
+                </div>
+
+                <!-- Pase 3 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">Homenaje a la Lonja</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Tiradito de corvina madurada, dashi blanco, cítricos y salicornia.</p>
+                </div>
+
+                <!-- Pase 4 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">Fuego y Brasa</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Pichón de Bresse en dos cocciones, puré de tupinambo asado y demi-glace de cacao.</p>
+                </div>
+
+                <!-- Pase 5 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">Pre-postre</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Sorbete de albahaca, yuzu y pepino osmotizado.</p>
+                </div>
+
+                <!-- Pase 6 -->
+                <div>
+                    <div class="flex items-end mb-2">
+                        <h3 class="font-serif text-xl text-cream tracking-wide">Tierra Fermentada</h3>
+                        <div class="menu-dots"></div>
+                    </div>
+                    <p class="font-light text-sm text-cream/50 italic">Cremoso de chocolate negro 85%, ajo negro fermentado y helado de miso.</p>
+                </div>
+
+            </div>
+
+            <div class="mt-16 text-center border-t border-copper/20 pt-8">
+                <p class="text-xs uppercase tracking-widest text-cream/40 mb-2">Aviso de Alérgenos</p>
+                <p class="font-light text-sm text-cream/60 max-w-2xl mx-auto">
+                    Nuestro menú es una experiencia cerrada. Sin embargo, adaptamos los pases para personas con celiaquía, alergias severas o dietas vegetarianas si se notifica en el momento de la reserva.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LA BODEGA Y ATMÓSFERA (NUEVA SECCIÓN EXTENSA) -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center mb-16">
+            <div class="order-2 md:order-1">
+                <h2 class="font-serif text-4xl md:text-5xl mb-6 text-cream">Maridaje <span class="text-copper italic">Líquido</span></h2>
+                <div class="w-16 h-px bg-wine mb-8"></div>
+                <p class="font-light leading-relaxed mb-6 text-cream/70 text-lg">
+                    Una cena clandestina no está completa sin el elixir adecuado. Nuestro sumiller ha seleccionado 5 referencias de pequeños productores, vinos naturales y destilados artesanales que desafían lo convencional y potencian el umami de cada pase.
+                </p>
+                <p class="font-light leading-relaxed text-cream/70 text-lg">
+                    La luz tenue, el sonido del jazz en vinilo y la cristalería tallada a mano crean la atmósfera perfecta para que el tiempo se detenga. No vienes solo a cenar; vienes a sumergirte en nuestro universo.
+                </p>
+            </div>
+            <div class="order-1 md:order-2 grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Vino tinto sirviéndose" class="w-full h-[350px] object-cover filter grayscale hover:grayscale-0 transition-all duration-500">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Plato de alta cocina" class="w-full h-[350px] object-cover filter grayscale hover:grayscale-0 transition-all duration-500 mt-12 shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- REGLAS DE LA CASA (NUEVA SECCIÓN EXTENSA) -->
+    <section class="py-20 px-6 bg-carbonLight/50 border-y border-copper/10">
+        <div class="max-w-6xl mx-auto text-center">
+            <i class="fa-solid fa-key text-4xl text-copper mb-6"></i>
+            <h2 class="font-serif text-3xl md:text-4xl text-cream mb-16">Las Reglas del Club</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12 text-left">
+                <div class="border-l border-wine pl-6">
+                    <h3 class="font-serif text-xl text-wineLight mb-3">01. Puntualidad Británica</h3>
+                    <p class="font-light text-sm text-cream/60 leading-relaxed">Las puertas se abren a las 20:30h y se cierran a las 21:00h exactas. Una vez servido el primer pase, no se permitirá el acceso para no interrumpir la experiencia sincronizada del resto de comensales.</p>
+                </div>
+                <div class="border-l border-wine pl-6">
+                    <h3 class="font-serif text-xl text-wineLight mb-3">02. Etiqueta Oscura</h3>
+                    <p class="font-light text-sm text-cream/60 leading-relaxed">Sugerimos un código de vestimenta elegante e informal, preferiblemente en tonos oscuros (Smart Casual). Queremos que te sientas parte de la atmósfera clandestina del espacio.</p>
+                </div>
+                <div class="border-l border-wine pl-6">
+                    <h3 class="font-serif text-xl text-wineLight mb-3">03. Desconexión Digital</h3>
+                    <p class="font-light text-sm text-cream/60 leading-relaxed">Fomentamos la conversación real y el misterio. Te pediremos que silencies tu teléfono. Podrás hacer fotos de los platos, pero la ubicación exacta y el espacio deben permanecer en secreto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE RESERVA / TICKETING -->
+    <!-- Imagen Parallax de fondo de vino -->
+    <section id="reserva" class="py-24 px-6 relative parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-carbon/90"></div> <!-- Overlay muy oscuro -->
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="bg-carbon border border-copper/30 p-8 md:p-14 shadow-2xl">
+                <div class="text-center mb-10 border-b border-copper/20 pb-8">
+                    <h2 class="font-serif text-4xl text-cream mb-4">Asegura tu Mesa</h2>
+                    <p class="font-light text-cream/70 text-sm">
+                        La ubicación secreta se revelará vía SMS 24 horas antes del evento.<br>Las entradas no son reembolsables.
+                    </p>
+                </div>
+
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('¡Reserva gastronómica completada! Listo para integrarlo con el TPV de mndesignweb.es');">
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-medium mb-2 text-copper">Nombre del Titular *</label>
+                            <input type="text" required class="w-full bg-transparent border-b border-carbonLight py-3 text-cream font-light transition-all" placeholder="Sr. / Sra.">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-medium mb-2 text-copper">Teléfono Móvil (SMS) *</label>
+                            <input type="tel" required class="w-full bg-transparent border-b border-carbonLight py-3 text-cream font-light transition-all" placeholder="+34 600 000 000">
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-xs uppercase tracking-widest font-medium mb-2 text-copper">Email de Contacto *</label>
+                        <input type="email" required class="w-full bg-transparent border-b border-carbonLight py-3 text-cream font-light transition-all" placeholder="Para recibir las entradas">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-10">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-medium mb-2 text-copper">Fecha de la Cena *</label>
+                            <select required class="w-full bg-carbon border-b border-carbonLight py-3 text-cream font-light transition-all cursor-pointer">
+                                <option value="" disabled selected>Selecciona una fecha...</option>
+                                <option value="oct-15">Viernes, 15 de Octubre</option>
+                                <option value="oct-16">Sábado, 16 de Octubre</option>
+                                <option value="oct-22">Viernes, 22 de Octubre</option>
+                                <option value="oct-23">Sábado, 23 de Octubre (Sold Out)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest font-medium mb-2 text-copper">Comensales *</label>
+                            <select required class="w-full bg-carbon border-b border-carbonLight py-3 text-cream font-light transition-all cursor-pointer">
+                                <option value="2">2 Personas - 360€</option>
+                                <option value="4">4 Personas - 720€</option>
+                                <option value="6">6 Personas - 1.080€ (Mesa Privada)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-10 bg-carbonLight/50 p-6 border border-wine/30">
+                        <label class="block text-xs uppercase tracking-widest font-medium mb-3 text-wineLight">Alergias o Requerimientos</label>
+                        <textarea class="w-full bg-transparent border-b border-carbonLight py-2 text-cream font-light transition-all resize-none" rows="2" placeholder="Por favor, especifica por quién es la alergia (Ej: 1 persona celíaca, 1 persona alérgica al marisco)."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-copper hover:bg-white text-carbon font-serif text-xl py-5 uppercase tracking-widest transition-colors duration-500 mt-4">
+                        Pagar y Reservar
+                    </button>
+                    
+                    <div class="flex justify-center gap-4 mt-6 text-cream/30 text-xl">
+                        <i class="fa-brands fa-cc-visa hover:text-cream transition"></i>
+                        <i class="fa-brands fa-cc-mastercard hover:text-cream transition"></i>
+                        <i class="fa-brands fa-cc-amex hover:text-cream transition"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MINIMALISTA -->
+    <footer class="bg-carbon border-t border-carbonLight py-12 text-center px-6">
+        <div class="font-serif text-3xl tracking-[0.4em] text-copper mb-4">
+            UMAMI
+        </div>
+        <p class="font-light text-xs text-cream/40 uppercase tracking-widest mb-6">Alicante, España.</p>
+        <div class="flex justify-center gap-6 mb-8 text-cream/50">
+            <a href="#" class="hover:text-copper transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-copper transition"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <p class="font-light text-xs text-cream/20">Desarrollado para reservas por mndesignweb.es</p>
+    </footer>
+
+</body>
+</html>
